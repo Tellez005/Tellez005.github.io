@@ -1,5 +1,46 @@
+p{
+    font-family: "Ek Mukta",sans-serif;
+    font-size: 14px;
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto; 
+    color: gray;
+    gap: 20px;
+    display: flex;
+    
 
+}
+
+.seccion1{
+    background-color: white; 
+    font-family: "Ek Mukta",sans-serif;
+    
+}
+button{
+    background-color: blue;
+    color: white;
+    font-family: "Ek Mukta",sans-serif;
+}
+.seccion2{
+    background-color: #E6E6E6;
+    font-family: "Ek Mukta",sans-serif;
+}
 body{
-    background-color: #ff0934;
-    color: aqua;
+    background-color:#1e1e1e ;
+    font-family: "Ek Mukta",sans-serif;
+}
+
+h2 a, h2{
+    font-family: "Ek Mukta",sans-serif;
+   background-color: #1e1e1e;
+   color: white; 
+   text-decoration: none;
+   
+}
+
+
+h1{
+        max-width: 800px;
+    margin: 0 auto; 
+    font-size: 26px;
 }
