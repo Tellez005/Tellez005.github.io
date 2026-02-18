@@ -8,7 +8,7 @@
 
     <p style="color: black; font-size: medium;"> Andres Tellez Bermudez A01640907 </p>
     
-    <h1 style="font-size: large;">Temas</h1>
+    <h1 id="encabezado", style="font-size: large;">Temas</h1>
     
     <h2 style="font-size: large;">Lo que conozco</h2>
         <p style="color: black; font-size: medium;">Nunca me a interesado el desarrollo web, realmente no tengo conociemientos de estos, es interesante saber de esto por que 
@@ -32,6 +32,23 @@
             <div class="elemento"> Flex 2</div>
             <div class="elemento"> Flex 3</div>
         </div>
+    <script>
+        let p = {"titulo": "Llano en llamas", "autor": "Juan Rulfo"}
+
+        async function obtenerJSON(){
+            const respuesta = await fetch("http://openlibrary.org/subjects/love.json");
+            const datos = await respuesta.json(); 
+            console.log(datos.works[0].title); 
+            let d = document.createElement("p"); 
+            d.textContent=datos.works[0].title;
+            
+            console.log(d);
+            document.getElementById("encabezado").appendChild(d);
+            
+
+
+        }
+    </script>
 
 </body>
 </html>
