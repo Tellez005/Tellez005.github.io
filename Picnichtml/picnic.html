@@ -23,7 +23,7 @@
   
 
   <button id="musico">Ve por mi artista favorito</button>
-  <button class='success'>Ve por otro mi artista favorito</button>
+  <button id="sigma" class='success'>Ve por otro mi artista favorito</button>
   <div class="flex two four-1200 demo">
     <div id="bio">1</div>
     <div id="imagen">2</div>
@@ -58,24 +58,46 @@
     let biografia;
 
     document.addEventListener("DOMContentLoaded", function() {
-         // biografia = document.getElementById();
-         // document.getElementById().addEventListener("click", );
+         biografia = document.getElementById("bio");
+         document.getElementById("musico").addEventListener("click", obtenerJSON);
+          //console.log("DOM listo");
+    });
+        document.addEventListener("DOMContentLoaded", function() {
+         biografia = document.getElementById("bio");
+         document.getElementById("sigma").addEventListener("click", obtenerJSON2);
           //console.log("DOM listo");
     });
 
 
+
      async function obtenerJSON() {
-       const respuesta = await fetch('https://www.theaudiodb.com/api/v1/json/123/search.php?s=');  
+       const respuesta = await fetch('https://www.theaudiodb.com/api/v1/json/123/search.php?s=Kanye_West');  
        const datos = await respuesta.json();
-       // console.log(datos);
+       console.log(datos);
 
         const textoArtista = document.createElement('p');
-        //textoArtista.textContent = 
-        //biografia.appendChild(textoArtista);
+        textoArtista.textContent = datos.artists[0].strBiographyCN;  
+        biografia.appendChild(textoArtista);
 
-        //const imagenArtista= document.createElement('');
+        const imagenArtista= document.createElement('img');
         
-        //imagenArtista.setAttribute('src', '');
+        imagenArtista.setAttribute('src', datos.artists[0].strArtistThumb);
+        biografia.appendChild(imagenArtista);
+     } 
+
+     async function obtenerJSON2() {
+       const respuesta = await fetch('https://www.theaudiodb.com/api/v1/json/123/search.php?s=Frank_Sinatra');  
+       const datos = await respuesta.json();
+       console.log(datos);
+
+        const textoArtista = document.createElement('p');
+        textoArtista.textContent = datos.artists[0].strBiographyEN;  
+        biografia.appendChild(textoArtista);
+
+        const imagenArtista= document.createElement('img');
+
+        imagenArtista.setAttribute('src', datos.artists[0].strArtistThumb);
+        biografia.appendChild(imagenArtista);
      }
 
 
