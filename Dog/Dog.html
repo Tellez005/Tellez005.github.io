@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi página con Picnic CSS</title>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+  
+  <style>
+    .flex.demo{
+     margin: .2em 0;
+     background: #2ecc40;
+     text-align: center;
+    }
+    .flex.demo div {
+      border:.1em solid pink;
+    }
+
+  </style>
+</head>
+<body>
+    <div id="bio">
+
+    </div>
+
+  <button id="Dogapi">Dog</button>
+  <button id="Dogap2">DogImagen</button>
+  <button id="Dogap3">DogVotar</button>
+  <button id="Dogap4">DogVotar</button>
+
+
+
+
+    <script>
+    
+    let biografia;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        biografia = document.getElementById("bio");
+        document.getElementById("Dogapi").addEventListener("click", irPorAlgo);
+        document.getElementById("Dogap2").addEventListener("click", irPorAlgo2);
+        document.getElementById("Dogap3").addEventListener("click", votar);
+        document.getElementById("Dogap4").addEventListener("click", Lista);
+
+    });
+
+
+        async function irPorAlgo() {
+        try {
+            const respuesta = await fetch("https://api.thedogapi.com/v1/breeds?limit=1",      {
+            method: "GET", 
+            headers: {
+                "x-api-key": "live_8bMKGo5ICsxO3cidzM3OLbJJv3ilT0WN9yc52ybjWIJwfTXRhAW5bq0jc7L8Hhoo"
+                }});
+            if (!respuesta.ok) {
+            console.log("Error");
+            //throw new Error("Error");
+            }
+            const data = await respuesta.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+        }
+        
+        async function irPorAlgo2() {
+        try {
+            const respuesta = await fetch("https://api.thedogapi.com/v1/images/search?limit=1",      {
+            method: "GET", 
+            headers: {
+                "x-api-key": "live_8bMKGo5ICsxO3cidzM3OLbJJv3ilT0WN9yc52ybjWIJwfTXRhAW5bq0jc7L8Hhoo"
+                }});
+            if (!respuesta.ok) {
+            console.log("Error");
+            //throw new Error("Error");
+            }
+            const data = await respuesta.json();
+            console.log(data.url);
+
+            const imagenArtista= document.createElement('img');
+            imagenArtista.setAttribute('src', data[0].url);
+            biografia.appendChild(imagenArtista);
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+        }
+        async function votar() {
+        try {
+                const respuesta = await fetch("https://api.thedogapi.com/v1/votes",
+                {
+                    method: 'POST', 
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': 'live_8bMKGo5ICsxO3cidzM3OLbJJv3ilT0WN9yc52ybjWIJwfTXRhAW5bq0jc7L8Hhoo' 
+                    },
+                    body: JSON.stringify({
+                    image_id: 'BJa4kxc4X',
+                    value: 1
+                })
+                });
+            if (!respuesta.ok) {
+            console.log("Error");
+            //throw new Error("Error de algo");
+            }
+            const data = await respuesta.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+        }
+        async function Lista() {
+        try {
+                const respuesta = await fetch("https://api.thedogapi.com/v1/votes",
+                {
+                    method: 'GET', 
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-api-key': 'live_8bMKGo5ICsxO3cidzM3OLbJJv3ilT0WN9yc52ybjWIJwfTXRhAW5bq0jc7L8Hhoo' 
+                    },
+                });
+            if (!respuesta.ok) {
+            console.log("Error");
+            //throw new Error("Error de algo");
+            }
+            const data = await respuesta.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
