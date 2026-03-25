@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mascotas</title>
+</head>
+<body>
+    <h2>Mascota:</h2>
+    <div id="mascota"></div>
+
+    <script>
+        fetch('/api/mascotas')
+            .then(res => res.json())
+            .then(data => {
+                const contenedor = document.getElementById('mascota');
+
+                data.forEach(mascota => {
+                    const p = document.createElement('p');
+                    p.textContent = mascota.nombre + ' - ' + mascota.color;
+                    contenedor.appendChild(p);
+                });
+            })
+            .catch(error => console.log(error));
+    </script>
+</body>
+</html>

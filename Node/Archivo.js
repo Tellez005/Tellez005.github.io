@@ -10,6 +10,10 @@ let p=new Promise(function(resuelto, rechazo){
 
 });
 
+{
+    "type"; "module"
+}
+
 console.log(p);
 //console.log(req);
 const urlProcesada = url.parse(req.url, true);

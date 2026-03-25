@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adoptantes</title>
+</head>
+<body>
+    <h2>Equipo:</h2>
+    <div id="equipo"></div>
+    <script>
+        fetch('/api/equipo')
+            .then(res => res.json())
+            .then(data => {
+                const contenedor = document.getElementById('equipo');
+
+                data.forEach(equipo => {
+                    const p = document.createElement('p');
+                    p.textContent = equipo.Nombre+ ' - ' + equipo.localidad+" - "+ equipo.cualidad;
+                    contenedor.appendChild(p);
+                });
+            })
+            .catch(error => console.log(error));
+    </script>
+</body>
+</html>
