@@ -52,35 +52,6 @@ import fs from 'fs';
         }); 
 
     }
-
-    function getperfiles(req, res) {
-        const perfil = [
-            {
-                "nombre": "Ramon",
-                "id": "2344",
-            },
-            {
-                "nombre": "saul", 
-                "id": "213"
-            }
-        ]  
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      
-      //EConvertimos un valor o un objeto en cadena de texto, lo necesitamos por si en algun momento no mandamos un string.
-      res.end(JSON.stringify(perfil));
-    }
-    function mostrarPerfil(req, res) {
-        fs.readFile('Tarea4/perfil.html', 'utf8', (error, data) => {
-            if (error) {
-              res.writeHead(500, { 'Content-Type': 'text/plain' });
-              res.end('Oh no!!!!');
-              return;
-            }
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(data);
-        });
-      }
-
      
       function mostrarAdoptantes(req, res) {
         //Construye una página básica adpotantes.html
